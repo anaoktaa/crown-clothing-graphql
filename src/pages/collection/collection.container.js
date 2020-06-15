@@ -29,7 +29,6 @@ const CollectionContainer = ({ match }) => (
                 return (<CollectionPage collection={getCollectionsByTitle} />)
             }
         }
-
     </Query>
 );
 
