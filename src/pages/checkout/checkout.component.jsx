@@ -1,11 +1,18 @@
 import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
 
-import { default as CheckoutItem } from '../../components/checkout-item/checkout-item.container';
+import { GET_CART_ITEM, GET_TOTAL_PAYMENT } from '../../graphql/resolvers';
+
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
 import './checkout.styles.scss';
 
-const CheckoutPage = ({ cartItems, total }) => {
+const CheckoutPage = () => {
+
+  const { data: {cartItems} } = useQuery(GET_CART_ITEM);
+  const { data: {total} } = useQuery(GET_TOTAL_PAYMENT);
+
   return (
     <div className='checkout-page'>
       <div className='checkout-header'>
